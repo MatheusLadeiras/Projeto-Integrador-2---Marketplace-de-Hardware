@@ -1,6 +1,6 @@
 -- Inserção na tabela usuário
-INSERT INTO Usuarios(cpf, email, nome_completo, hash_senha, saldo_disponivel ,saldo_bloqueado, reputacao_vendas , role) VALUES
-('12345678910', 'lars.monsen@gmail.com', 'Lars Monsen', 'dhasudakekjfi23', 0, 0, 0, 'ADMIN'),
+INSERT INTO Usuarios(cpf, email, nome_completo, hash_senha, saldo_disponivel, saldo_bloqueado, reputacao_vendas , role) VALUES
+('12345678910', 'lars.monsen@gmail.com', 'Lars Monsen', 'dhasudakekjfi23', 0, 0, 2, 'ADMIN'),
 ('10987654321', 'bia.monsen@gmail.com', 'Bia Monsen', 'dffsuw55ekjfi23', 0, 0, 0, 'ADMIN'),
 ('24924602078', 'osolsi.Sat@gmail.com', 'Osolsi Sat', 'dhasudakekjfi23', 0, 0, 5, 'CLIENTE'),
 ('80740889010', 'bumse.Sat@gmail.com', 'Bumse Sat', 'djueijgoajsdo', 0, 0, 4.5, 'CLIENTE'),
@@ -54,7 +54,6 @@ INSERT into ModelosHardware (fabricante, linha_modelo, especificacao_tecnica, pr
 ('fabricante4', 'linha_modelo', 'especificacao_tecnica', 12443.33, 'slug_categoria1'),
 ('fabricante5', 'linha_modelo', 'especificacao_tecnica', 123, 'slug_categoria6');
 
-	
 -- Inserção tabela Anuncios
 INSERT into Anuncios (codigo_anuncio, vendedor, titulo, preco_venda, aliquota_taxa_aplicada, valor_taxa_plataforma, valor_liquido_vendedor, estado_item, status, id_parte) values
 ('codigo_anuncio1', 1, 'titulo', 123, 123, 123, 123, 'NOVO', 'RASCUNHO', 1),
@@ -62,7 +61,6 @@ INSERT into Anuncios (codigo_anuncio, vendedor, titulo, preco_venda, aliquota_ta
 ('codigo_anuncio3', 3, 'titulo', 123, 123, 123, 123, 'NOVO', 'RASCUNHO', 3),
 ('codigo_anuncio4', 4, 'titulo', 123, 123, 123, 123, 'NOVO', 'RASCUNHO', 4),
 ('codigo_anuncio5', 5, 'titulo', 123, 123, 123, 123, 'NOVO', 'RASCUNHO', 5);
-
 
 -- Inserção tabela Pedidos
 INSERT into Pedidos (data_hora_criacao, valor_total_transacao, status_pedido, data_limite_homologacao, comprador, anuncio, disputa, Envio, Conta) values
@@ -72,6 +70,5 @@ INSERT into Pedidos (data_hora_criacao, valor_total_transacao, status_pedido, da
 ('2022-06-07 02:01:32', 100.12, 'EM_DISPUTA', '2023-06-27 18:40:16', 5, 'codigo_anuncio2', '678768678678', '291317hasidas', 4),
 ('2022-06-07 02:01:32', 1060.12, 'CANCELADO', '2023-06-27 18:40:16', 4, 'codigo_anuncio5', '3213123123123', '291317hasidas', 2),
 ('2022-06-07 02:01:32', 7100.12, 'CONCLUIDO', '2023-06-27 18:40:16', 1, 'codigo_anuncio2', '678768678678', '291317hasidas', 5);
-
 
 -- 4devs & mockdatagen 

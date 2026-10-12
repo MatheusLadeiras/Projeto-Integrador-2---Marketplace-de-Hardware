@@ -9,9 +9,9 @@ create table Usuarios (
 	email varchar(255) NOT NULL,
 	nome_completo varchar(255) NOT NULL,
 	hash_senha varchar(255) NOT NULL,
-	saldo_disponivel float(10,2),
-	saldo_bloqueado float(10,2),
-	reputacao_vendas float,
+	saldo_disponivel float(10,2) CHECK (saldo_disponivel >= 0),
+	saldo_bloqueado float(10,2) CHECK (saldo_bloqueado >= 0),
+	reputacao_vendas float CHECK (5.0 <= reputacao_vendas >= 0),
 	role enum ('ADMIN', 'CLIENTE') NOT NULL,
 	UNIQUE (cpf, email, hash_senha)
 );
@@ -49,7 +49,7 @@ create table Envios (
 -- Criar tabela ContasCustodia
 create table ContasCustodia (
 	id_custodia_transacao INT AUTO_INCREMENT PRIMARY KEY, -- diferente,
-	montante_pedido float(10,2),
+	montante_pedido float(10,2) CHECK (montante_pedido >= 0),
 	status enum('RETIRADA', 'CONGELADA_DISPUTA', 'LIQUIDA_VENDEDOR', 'ESTORNADA_COMPRADOR')
 );
 
@@ -66,7 +66,7 @@ create table ModelosHardware (
 	fabricante varchar(255),
 	linha_modelo varchar(255),
 	especificacao_tecnica varchar(255),
-	preco_mediano_historico float(10,2),
+	preco_mediano_historico float(10,2) CHECK (preco_mediano_historico >= 0),
 	categoria varchar(255),
 	foreign key (categoria) references Categorias(slug_categoria)
 );
@@ -76,10 +76,10 @@ create table Anuncios (
 	codigo_anuncio varchar(255) PRIMARY KEY,
 	vendedor INT NOT NULL, -- diferente
 	titulo varchar(255) NOT NULL,
-	preco_venda float(10,2) NOT NULL,
-	aliquota_taxa_aplicada float(10,2),
-	valor_taxa_plataforma float(10,2),
-	valor_liquido_vendedor float(10,2),
+	preco_venda float(10,2) NOT null CHECK (preco_venda >= 0),
+	aliquota_taxa_aplicada float(10,2) CHECK (aliquota_taxa_aplicada >= 0),
+	valor_taxa_plataforma float(10,2) CHECK (valor_taxa_plataforma >= 0),
+	valor_liquido_vendedor float(10,2) CHECK (valor_liquido_vendedor >= 0),
 	estado_item enum('NOVO', 'USADO_EXCELENTE', 'USADO_BOM', 'USADO_DEFEITO') NOT NULL,
 	status enum('RASCUNHO', 'ATIVO', 'PAUSADO', 'VENDIDO') NOT NULL,
 	id_parte INT NOT NULL, -- diferente
@@ -91,7 +91,7 @@ create table Anuncios (
 create table Pedidos (
 	id_pedido INT AUTO_INCREMENT PRIMARY KEY, -- diferente
 	data_hora_criacao datetime,
-	valor_total_transacao float(10,2) NOT NULL,
+	valor_total_transacao float(10,2) NOT null CHECK (valor_total_transacao >= 0),
 	status_pedido enum('AGUARDANDO_ENVIO', 'ENVIADO', 'ENTREGUE', 'EM_DISPUTA', 'CONCLUIDO', 'CANCELADO') NOT NULL,
 	data_limite_homologacao datetime,
 	
